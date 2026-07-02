@@ -1,0 +1,171 @@
+/* =====================================================
+   theme.css  —  COLORS & FONTS
+   Change the BACKGROUND COLOR, brand COLOR, and FONTS here.
+   ===================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root{
+  --paper:#F5F3EC;       /* page background color */
+  --card:#FFFFFF;        /* card / panel background */
+  --ink:#1B2030;         /* main text color */
+  --ink2:#252B3D;        /* secondary text color */
+  --cardinal:#9E2B3A;    /* brand color (buttons, headings, links) */
+  --cardinal-deep:#7C1F2C;
+  --cleared:#1A7F52;  --cleared-bg:#E5F2EB;   /* green status */
+  --pending:#B0760D;  --pending-bg:#FAF0DC;   /* amber status */
+  --flagged:#B5362F;  --flagged-bg:#F8E5E3;   /* red status */
+  --line:#E5E1D6;        /* border / divider color */
+  --muted:#6C7280;       /* muted/grey text */
+  --shadow:0 1px 2px rgba(27,32,48,.05),0 8px 24px rgba(27,32,48,.07);
+}
+
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  font-family:'Inter',system-ui,sans-serif;   /* MAIN FONT */
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+.serif{font-family:'Fraunces',Georgia,serif;} /* HEADING FONT */
+a{color:var(--cardinal);}
+/* =====================================================
+   layout.css  —  PAGE STRUCTURE, TOP BAR, SPACING
+   ===================================================== */
+
+/* top bar / header */
+.topbar{
+  background:var(--card); border-bottom:1px solid var(--line);
+  display:flex; align-items:center; justify-content:space-between; padding:14px 28px;
+}
+.brand{display:flex; align-items:center; gap:11px;}
+.seal{
+  width:34px; height:34px; border-radius:8px; background:var(--cardinal);
+  color:#fff; display:flex; align-items:center; justify-content:center; flex:none;
+}
+.seal svg{width:19px; height:19px;}
+.brand .wm{font-weight:700; font-size:15px; letter-spacing:-.01em;}
+.topbar .right{display:flex; align-items:center; gap:14px; font-size:13.5px;}
+.topbar .right .who{text-align:right; font-weight:600; line-height:1.2;}
+.topbar .right .who small{display:block; font-weight:500; color:var(--muted); font-size:11.5px;}
+.btn-out{
+  border:1px solid var(--line); color:var(--muted); text-decoration:none;
+  padding:7px 13px; border-radius:8px; font-size:12.5px; font-weight:600;
+}
+.btn-out:hover{border-color:var(--cardinal); color:var(--cardinal);}
+
+/* page container + page headings */
+.wrap{max-width:980px; margin:0 auto; padding:30px 28px 60px;}
+.eyebrow{font-size:11px; font-weight:700; letter-spacing:.13em; text-transform:uppercase; color:var(--cardinal); margin-bottom:6px;}
+.page-h{font-size:28px; font-weight:600; letter-spacing:-.02em; margin:0 0 3px;}
+.page-sub{color:var(--muted); font-size:14px; margin:0 0 22px;}
+.backlink{display:inline-block; margin-bottom:18px; color:var(--cardinal); font-weight:600; font-size:13px; text-decoration:none;}
+.backlink:hover{text-decoration:underline;}
+/* =====================================================
+   components.css  —  CARDS, PILLS, TABLES, BUTTONS, FORMS
+   ===================================================== */
+
+/* cards */
+.card{background:var(--card); border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow); padding:22px 24px; margin-bottom:20px;}
+.card h3{margin:0 0 14px; font-size:15px; font-weight:600;}
+
+/* status pills */
+.pill{display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:600; padding:4px 11px; border-radius:999px; white-space:nowrap;}
+.pill::before{content:""; width:7px; height:7px; border-radius:50%;}
+.pill.cleared{background:var(--cleared-bg); color:var(--cleared);} .pill.cleared::before{background:var(--cleared);}
+.pill.pending{background:var(--pending-bg); color:var(--pending);} .pill.pending::before{background:var(--pending);}
+.pill.flagged{background:var(--flagged-bg); color:var(--flagged);} .pill.flagged::before{background:var(--flagged);}
+
+/* progress bar */
+.progress-track{height:12px; background:#ECE8DC; border-radius:999px; overflow:hidden; margin:6px 0 14px;}
+.progress-fill{height:100%; background:var(--cleared); border-radius:999px;}
+.counts{display:flex; gap:20px; flex-wrap:wrap; font-size:13px; color:var(--muted);}
+.counts b{color:var(--ink);}
+
+/* tables */
+table.data{width:100%; border-collapse:collapse; font-size:13.5px;}
+table.data th{text-align:left; background:var(--ink); color:#fff; font-weight:600; padding:11px 14px; font-size:12.5px;}
+table.data td{padding:11px 14px; border-bottom:1px solid var(--line);}
+table.data tr:last-child td{border-bottom:none;}
+table.data tr:nth-child(even) td{background:#FBFAF6;}
+.muted{color:var(--muted);}
+
+/* form elements + buttons */
+input[type=text], input[type=password], input[type=date], select{
+  font-family:inherit; font-size:14px; padding:10px 12px;
+  border:1.5px solid var(--line); border-radius:9px; background:#FCFBF8; color:var(--ink);
+}
+input:focus, select:focus{outline:none; border-color:var(--cardinal); background:#fff;}
+label{font-size:13px; font-weight:600; color:var(--ink2);}
+.btn{font-family:inherit; font-size:14px; font-weight:600; cursor:pointer; background:var(--cardinal); color:#fff; border:none; padding:10px 18px; border-radius:9px;}
+.btn:hover{background:var(--cardinal-deep);}
+.btn-dark{background:var(--ink);}
+.btn-dark:hover{background:var(--cardinal);}
+
+/* search bar */
+.searchbar{display:flex; gap:10px; margin-bottom:20px;}
+.searchbar input{flex:1; max-width:380px;}
+
+/* staff manage block */
+.manage{border:1px solid var(--line); border-radius:12px; padding:18px 20px; margin-bottom:14px; background:var(--card); box-shadow:var(--shadow); max-width:600px;}
+.manage .req-name{font-weight:600; font-size:15px; margin-bottom:14px;}
+.manage .field-row{display:flex; align-items:center; gap:12px; flex-wrap:wrap;}
+
+/* feedback messages */
+.notice{background:var(--cleared-bg); color:var(--cleared); padding:10px 14px; border-radius:9px; font-size:13.5px; font-weight:600; margin-bottom:16px; display:inline-block;}
+.error{background:var(--flagged-bg); color:var(--flagged); padding:10px 14px; border-radius:9px; font-size:13.5px; font-weight:600; margin-bottom:16px; display:inline-block;}
+
+/* student help note */
+.student-note{margin-top:20px; font-size:13px; color:var(--muted); background:#FBFAF6; border:1px solid var(--line); border-radius:10px; padding:14px 16px; line-height:1.55;}
+.student-note a{color:var(--cardinal); font-weight:600;}
+/* =====================================================
+   login.css  —  LOGIN PAGE ONLY
+   ===================================================== */
+.login-bg{min-height:100vh; display:flex; align-items:center; justify-content:center;
+  background:radial-gradient(1200px 600px at 80% -10%, #2A3045 0%, var(--ink) 55%); padding:20px;}
+.login-card{background:var(--card); width:390px; max-width:94vw; border-radius:18px; box-shadow:0 24px 60px rgba(0,0,0,.35); padding:34px;}
+.login-card .brand{margin-bottom:24px;}
+.login-card h1{font-size:21px; font-weight:600; margin:0 0 4px;}
+.login-card .sub{color:var(--muted); font-size:13.5px; margin:0 0 22px;}
+.login-card .field{margin-bottom:14px;}
+.login-card .field label{display:block; margin-bottom:6px;}
+.login-card .field input, .login-card .field select{width:100%;}
+.login-card .btn{width:100%; margin-top:8px; padding:12px;}
+.show-pass{display:flex; align-items:center; gap:7px; font-size:12.5px; color:var(--muted); margin:-2px 0 6px; cursor:pointer; font-weight:500;}
+.show-pass input{width:auto; margin:0;}
+.help-wrap{text-align:center; margin-top:16px;}
+.help-toggle{background:none; border:none; color:var(--cardinal); font-weight:600; font-size:13px; cursor:pointer; padding:0; font-family:inherit; text-decoration:underline;}
+.help-box{margin-top:14px; background:#FBFAF6; border:1px solid var(--line); border-radius:10px; padding:14px 16px; font-size:12.5px; color:var(--ink2); line-height:1.65; text-align:left;}
+.help-box b{color:var(--ink);}
+.help-box a{color:var(--cardinal); font-weight:600;}
+
+/* ---- staff filter buttons (prominent oblong pills) ---- */
+.filters{display:flex; justify-content:center; gap:12px; margin:6px 0 24px; flex-wrap:nowrap;}
+.filter-btn{display:inline-flex; align-items:center; gap:9px; text-decoration:none; font-size:13.5px; font-weight:600; padding:11px 24px; border-radius:999px; color:var(--ink2); background:var(--card); border:1.5px solid var(--line); box-shadow:0 1px 2px rgba(27,32,48,.05); transition:.16s;}
+.filter-btn:hover{border-color:var(--cardinal); color:var(--cardinal); transform:translateY(-1px); box-shadow:0 5px 14px rgba(27,32,48,.10);}
+.filter-btn.on{background:var(--cardinal); color:#fff; border-color:var(--cardinal); box-shadow:0 5px 16px rgba(158,43,58,.32);}
+.fcount{font-size:11.5px; font-weight:700; background:rgba(27,32,48,.08); color:var(--ink2); padding:2px 9px; border-radius:999px; min-width:22px; text-align:center; line-height:1.5;}
+.fcount.action{background:var(--pending-bg); color:var(--pending);}
+.fcount.cleared{background:var(--cleared-bg); color:var(--cleared);}
+.filter-btn.on .fcount, .filter-btn.on .fcount.action, .filter-btn.on .fcount.cleared{background:rgba(255,255,255,.25); color:#fff;}
+
+/* ---- clearance complete banner (student) ---- */
+.complete-banner{display:flex; align-items:center; gap:15px; background:var(--cleared-bg); border:1px solid #C4E4D3; border-radius:12px; padding:18px 22px; margin-bottom:22px;}
+.complete-banner .cb-ico{width:42px; height:42px; border-radius:50%; background:var(--cleared); color:#fff; display:flex; align-items:center; justify-content:center; flex:none;}
+.complete-banner .cb-ico svg{width:22px; height:22px;}
+.complete-banner .cb-title{font-family:'Fraunces',serif; font-weight:700; font-size:16.5px; color:#146A45;}
+.complete-banner .cb-sub{font-size:13px; color:#3B7A5E; margin-top:1px;}
+/* ---- fully-cleared mini badge (staff list) ---- */
+.mini-cleared{display:inline-block; margin-top:3px; font-size:10.5px; font-weight:700; color:var(--cleared); background:var(--cleared-bg); padding:2px 8px; border-radius:999px;}
+
+/* ---- signed column (student clearance table) ---- */
+.signed{color:var(--cleared); font-weight:600; font-size:12.5px; white-space:nowrap;}
+
+/* ---- signing (finalize/lock) ---- */
+.btn-green{background:var(--cleared);}
+.btn-green:hover{background:#146A45;}
+.manage.locked{background:#F6FBF8; border-color:#C4E4D3;}
+.locked-note{font-size:12.5px; color:var(--muted); margin-left:10px;}
+.sign-bar{max-width:600px; margin:-4px 0 16px; display:flex; align-items:center; flex-wrap:wrap; gap:6px;}
